@@ -3,6 +3,7 @@ package com.aware.plugin.questionaire;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -15,7 +16,8 @@ public class EsmAlarm extends BroadcastReceiver {
 	
 	@Override
     public void onReceive(Context context, Intent intent) {
-        Plugin.triggerQuestionnaire(context, 0);
+        int id = intent.getExtras().getInt("id");
+        Plugin.triggerQuestionnaire(context, id);
     }
 
 	public void SetAlarm(Context context, long time, int id) {
