@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../aware-client/aware-core/aware-core.iml" filepath="$PROJECT_DIR$/../aware-client/aware-core/aware-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/com.aware.plugin.questionnaire.iml" filepath="$PROJECT_DIR$/com.aware.plugin.questionnaire.iml" />
-      <module fileurl="file://$PROJECT_DIR$/questionaire/questionaire.iml" filepath="$PROJECT_DIR$/questionaire/questionaire.iml" />
+      <module fileurl="file://$PROJECT_DIR$/questionnaire/questionnaire.iml" filepath="$PROJECT_DIR$/questionnaire/questionnaire.iml" />
     </modules>
   </component>
 </project>
