@@ -23,7 +23,6 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("asd", "Settings onCreate");
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -33,13 +32,10 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
 
     private void syncSettings() {
         CheckBoxPreference active = (CheckBoxPreference) findPreference(STATUS_PLUGIN_QUESTIONNAIRE);
-        Log.d("asd", "SyncSettings");
-        Log.d("asd", Aware.getSetting(getApplicationContext(), QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE));
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-        Log.d("asd", "onSharedPreferenceChanged");
         Preference preference = (Preference) findPreference(key);
 
         if( preference.getKey().equals(STATUS_PLUGIN_QUESTIONNAIRE)) {
@@ -50,9 +46,6 @@ public class Settings extends PreferenceActivity implements OnSharedPreferenceCh
             } else {
                 Aware.stopPlugin(getApplicationContext(), getPackageName());
             }
-        }
-        if( preference.getKey().equals(QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE)) {
-            Log.d("asd", "QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE");
         }
 
         Intent apply = new Intent(Aware.ACTION_AWARE_REFRESH);

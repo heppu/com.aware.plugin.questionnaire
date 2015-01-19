@@ -13,12 +13,12 @@ public class EsmAlarm extends BroadcastReceiver {
 	@Override
     public void onReceive(Context context, Intent intent) {
         int id = intent.getExtras().getInt("id");
-        Log.d("asd", "Alarm onReceive id: "+id);
+        Log.d("AWARE::Questionnaire", "Alarm onReceive id: "+id);
         Plugin.triggerQuestionnaire(context, id);
     }
 
 	public void SetAlarm(Context context, long time, int id) {
-        Log.d("asd", "Alarm SetAlarm id: "+id);
+        Log.d("AWARE::Questionnaire", "Alarm SetAlarm");
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		Intent i = new Intent(context, EsmAlarm.class);
         i.putExtra("id", id);
@@ -27,7 +27,7 @@ public class EsmAlarm extends BroadcastReceiver {
 	}
 
 	public void CancelAlarm(Context context, long time) {
-        Log.d("asd", "Alarm CancelAlarm");
+        Log.d("AWARE::Questionnaire", "Alarm CancelAlarm");
         Intent intent = new Intent(context, EsmAlarm.class);
 		PendingIntent sender = PendingIntent.getBroadcast(context, (int) time, intent, 0);
 		AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);

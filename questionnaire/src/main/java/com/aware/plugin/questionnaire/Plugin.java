@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.util.Log;
 
@@ -15,10 +14,8 @@ import org.json.*;
 import com.aware.Aware;
 import com.aware.ESM;
 import com.aware.providers.ESM_Provider.*;
-import com.aware.Aware_Preferences;
 import com.aware.utils.Aware_Plugin;
 
-import java.util.Date;
 import java.util.Iterator;
 
 public class Plugin extends Aware_Plugin {
@@ -42,9 +39,7 @@ public class Plugin extends Aware_Plugin {
 
             if( cursor != null && cursor.moveToFirst() ) {
                 if(action.equals(ESM.ACTION_AWARE_ESM_ANSWERED)) {
-                    Log.d("asd", "answered");
                     String answer = cursor.getString(10);
-                    Log.d("asd", answer);
 
                     JSONArray arr = null;
                     try {
@@ -54,9 +49,9 @@ public class Plugin extends Aware_Plugin {
                         JSONObject conditions = arr.getJSONObject(id).getJSONArray("questions").getJSONObject(question_id).getJSONObject("data").getJSONObject("conditions");
                         Iterator<?> keys = conditions.keys();
 
-                        while( keys.hasNext() ){
-                            String key = (String)keys.next();
-                            if(key.equals(answer)) {
+                        while (keys.hasNext()) {
+                            String key = (String) keys.next();
+                            if (key.equals(answer)) {
                                 if (TryParseInt(conditions.get(key).toString()) != null) {
                                     int next_id = TryParseInt(conditions.get(key).toString()) - 1;
                                     SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -74,12 +69,6 @@ public class Plugin extends Aware_Plugin {
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
-
-                } else if(action.equals(ESM.ACTION_AWARE_ESM_DISMISSED)) {
-                    Log.d("asd", "dismissed");
-                } else if(action.equals(ESM.ACTION_AWARE_ESM_EXPIRED)) {
-                    Log.d("asd", "expired");
                 }
                 cursor.close();
             }
@@ -88,15 +77,8 @@ public class Plugin extends Aware_Plugin {
 
     @Override
     public void onCreate() {
-        Log.d("asd", "onCreate");
         super.onCreate();
         TAG = "AWARE::Questionnaire";
-
-        Intent aware = new Intent(this, Aware.class);
-        startService(aware);
-
-        Aware.setSetting(getApplicationContext(), Settings.STATUS_PLUGIN_QUESTIONNAIRE, true);
-        Aware.setSetting(getApplicationContext(), Aware_Preferences.STATUS_ESM, true);
 
         Intent apply = new Intent(Aware.ACTION_AWARE_REFRESH);
         sendBroadcast(apply);
@@ -125,12 +107,11 @@ public class Plugin extends Aware_Plugin {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("asd", "onStartCommand");
         String json = Aware.getSetting(getApplicationContext(), Settings.QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE);
         String old_json = sharedpreferences.getString(JSON, "");
 
-        if(!json.equals(old_json)){
-            jsonParser();
+        if(json.length()>0 && !json.equals(old_json)){
+            jsonParser(json);
         }
 
         return START_STICKY;
@@ -160,14 +141,12 @@ public class Plugin extends Aware_Plugin {
         editor.clear();
         editor.commit();
 
-        Aware.setSetting(getApplicationContext(), Settings.STATUS_PLUGIN_QUESTIONNAIRE, false);
         unregisterReceiver(esmReceiver);
         Intent apply = new Intent(Aware.ACTION_AWARE_REFRESH);
         sendBroadcast(apply);
     }
 
     protected static void triggerQuestionnaire(Context context, int id) {
-       Log.d("asd", "triggerQuestionnaire");
        JSONArray arr = null;
 
         try {
@@ -178,12 +157,10 @@ public class Plugin extends Aware_Plugin {
 
             arr = new JSONArray(Aware.getSetting(context, Settings.QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE));
             String esm = arr.getJSONObject(id).getJSONArray("questions").getJSONObject(0).getJSONObject("data").getJSONArray("esm").toString();
-            //esm = "[{"esm":{"esm_title":"asd","esm_submit":"Submit","esm_type":"2","esm_expiration_threashold":"0","esm_trigger":"esm-questionnaire_1","esm_radios":["a","b"],"esm_instructions":""}}]
+
             Intent queue_esm = new Intent(ESM.ACTION_AWARE_QUEUE_ESM);
             queue_esm.putExtra(ESM.EXTRA_ESM, esm);
             context.sendBroadcast(queue_esm);
-
-            Log.d("asd data: ", esm);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -191,13 +168,11 @@ public class Plugin extends Aware_Plugin {
 
     }
 
-    public boolean jsonParser() {
-        Log.d("asd", "jsonParser");
+    public boolean jsonParser(String json) {
         JSONArray arr = null;
         long timeNow = System.currentTimeMillis();
 
         try {
-            String json = Aware.getSetting(getApplicationContext(), Settings.QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE);
             arr = new JSONArray(json);
             for (int i = 0; i < arr.length(); i++){
                 JSONArray triggers = arr.getJSONObject(i).getJSONObject("trigger").getJSONArray("triggers");
@@ -208,6 +183,7 @@ public class Plugin extends Aware_Plugin {
                     }
                 }
             }
+
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString(JSON, json);
             editor.commit();

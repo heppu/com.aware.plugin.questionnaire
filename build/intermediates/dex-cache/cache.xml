@@ -6,7 +6,7 @@
         jar="/home/heppu/AndroidProjects/com.aware.plugin.questionnaire/questionnaire/build/intermediates/exploded-aar/com.aware.plugin.questionnaire/aware-core/unspecified/classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="4edec9dd29d6d0a133e147dc87bea8afd5234267"/>
+        sha1="c2c5c0940b8ceabd629c6fbd3b1220584c8de0bf"/>
     <item
         dex="/home/heppu/AndroidProjects/com.aware.plugin.questionnaire/questionnaire/build/intermediates/pre-dexed/release/internal_impl-21.0.0-5bdf5e70e2f398f5055e76d7490c73e0236963e5.jar"
         jar="/home/heppu/AndroidProjects/com.aware.plugin.questionnaire/questionnaire/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.0/libs/internal_impl-21.0.0.jar"
