@@ -8,49 +8,32 @@ ADDED from AndroidManifest.xml:1:1
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
 	android:versionName
-		ADDED from AndroidManifest.xml:4:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
 	android:versionCode
-		ADDED from AndroidManifest.xml:3:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
-uses-permission#com.aware.READ_CONTEXT_DATA
-ADDED from AndroidManifest.xml:6:5
-MERGED from com.awareframework:aware-core:3.2.5:44:5
-	android:name
-		ADDED from AndroidManifest.xml:6:22
-uses-permission#com.aware.WRITE_CONTEXT_DATA
-ADDED from AndroidManifest.xml:7:5
-MERGED from com.awareframework:aware-core:3.2.5:45:5
-	android:name
-		ADDED from AndroidManifest.xml:7:22
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from AndroidManifest.xml:8:5
-MERGED from com.awareframework:aware-core:3.2.5:46:5
-	android:name
-		ADDED from AndroidManifest.xml:8:22
 uses-permission#android.permission.INTERNET
-ADDED from AndroidManifest.xml:9:5
+ADDED from AndroidManifest.xml:4:5
 MERGED from com.awareframework:aware-core:3.2.5:47:5
 	android:name
-		ADDED from AndroidManifest.xml:9:22
+		ADDED from AndroidManifest.xml:4:22
 uses-permission#android.permission.WAKE_LOCK
-ADDED from AndroidManifest.xml:10:5
+ADDED from AndroidManifest.xml:5:5
 MERGED from com.awareframework:aware-core:3.2.5:49:5
 	android:name
-		ADDED from AndroidManifest.xml:10:22
+		ADDED from AndroidManifest.xml:5:22
 uses-permission#android.permission.INTERACT_ACROSS_USER_FULL
-ADDED from AndroidManifest.xml:11:5
+ADDED from AndroidManifest.xml:6:5
 	android:name
-		ADDED from AndroidManifest.xml:11:22
+		ADDED from AndroidManifest.xml:6:22
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from AndroidManifest.xml:12:5
+ADDED from AndroidManifest.xml:7:5
 MERGED from com.awareframework:aware-core:3.2.5:48:5
 	android:name
-		ADDED from AndroidManifest.xml:12:22
+		ADDED from AndroidManifest.xml:7:22
 application
-ADDED from AndroidManifest.xml:14:5
+ADDED from AndroidManifest.xml:9:5
 MERGED from com.android.support:appcompat-v7:21.0.3:16:5
 MERGED from com.android.support:support-v4:21.0.3:16:5
 MERGED from com.android.support:gridlayout-v7:21.0.3:16:5
@@ -60,46 +43,46 @@ MERGED from com.android.support:support-v4:21.0.3:16:5
 MERGED from com.android.support:cardview-v7:21.0.3:16:5
 MERGED from com.awareframework:aware-core:3.2.5:51:5
 	android:label
-		ADDED from AndroidManifest.xml:17:9
+		ADDED from AndroidManifest.xml:12:9
 	android:allowBackup
-		ADDED from AndroidManifest.xml:15:9
+		ADDED from AndroidManifest.xml:10:9
 	android:icon
-		ADDED from AndroidManifest.xml:16:9
+		ADDED from AndroidManifest.xml:11:9
 	android:theme
 		ADDED from com.awareframework:aware-core:3.2.5:54:9
 service#com.aware.plugin.questionnaire.Plugin
-ADDED from AndroidManifest.xml:19:9
+ADDED from AndroidManifest.xml:14:9
 	android:label
-		ADDED from AndroidManifest.xml:19:95
+		ADDED from AndroidManifest.xml:14:95
 	android:exported
-		ADDED from AndroidManifest.xml:19:71
+		ADDED from AndroidManifest.xml:14:71
 	android:name
-		ADDED from AndroidManifest.xml:19:18
+		ADDED from AndroidManifest.xml:14:18
 receiver#com.aware.plugin.questionnaire.EsmAlarm
-ADDED from AndroidManifest.xml:20:9
+ADDED from AndroidManifest.xml:15:9
 	android:name
-		ADDED from AndroidManifest.xml:20:19
+		ADDED from AndroidManifest.xml:15:19
 provider#com.aware.plugin.questionnaire.Provider
-ADDED from AndroidManifest.xml:21:9
+ADDED from AndroidManifest.xml:16:9
 	android:exported
-		ADDED from AndroidManifest.xml:21:159
+		ADDED from AndroidManifest.xml:16:159
 	android:authorities
-		ADDED from AndroidManifest.xml:21:74
+		ADDED from AndroidManifest.xml:16:74
 		INJECTED from AndroidManifest.xml:0:0
 	android:readPermission
-		ADDED from AndroidManifest.xml:21:183
+		ADDED from AndroidManifest.xml:16:183
 	android:enabled
-		ADDED from AndroidManifest.xml:21:136
+		ADDED from AndroidManifest.xml:16:136
 	android:name
-		ADDED from AndroidManifest.xml:21:19
+		ADDED from AndroidManifest.xml:16:19
 	android:writePermission
-		ADDED from AndroidManifest.xml:21:236
+		ADDED from AndroidManifest.xml:16:236
 activity#com.aware.plugin.questionnaire.Settings
-ADDED from AndroidManifest.xml:22:9
+ADDED from AndroidManifest.xml:17:9
 	android:exported
-		ADDED from AndroidManifest.xml:22:74
+		ADDED from AndroidManifest.xml:17:74
 	android:name
-		ADDED from AndroidManifest.xml:22:19
+		ADDED from AndroidManifest.xml:17:19
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 MERGED from com.android.support:appcompat-v7:21.0.3:15:5
@@ -131,6 +114,18 @@ uses-feature#android.hardware.camera.autofocus
 ADDED from com.awareframework:aware-core:3.2.5:12:5
 	android:name
 		ADDED from com.awareframework:aware-core:3.2.5:12:19
+uses-permission#com.aware.READ_CONTEXT_DATA
+ADDED from com.awareframework:aware-core:3.2.5:44:5
+	android:name
+		ADDED from com.awareframework:aware-core:3.2.5:44:22
+uses-permission#com.aware.WRITE_CONTEXT_DATA
+ADDED from com.awareframework:aware-core:3.2.5:45:5
+	android:name
+		ADDED from com.awareframework:aware-core:3.2.5:45:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from com.awareframework:aware-core:3.2.5:46:5
+	android:name
+		ADDED from com.awareframework:aware-core:3.2.5:46:22
 activity#com.aware.Aware_Preferences
 ADDED from com.awareframework:aware-core:3.2.5:59:9
 	android:label
