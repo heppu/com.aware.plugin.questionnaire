@@ -80,9 +80,6 @@ public class Plugin extends Aware_Plugin {
         super.onCreate();
         TAG = "AWARE::Questionnaire";
 
-        Intent apply = new Intent(Aware.ACTION_AWARE_REFRESH);
-        sendBroadcast(apply);
-
         sharedpreferences = getSharedPreferences(QUESTIONNAIRE_PREFS, Context.MODE_PRIVATE);
 
         context_producer = new ContextProducer() {
@@ -103,6 +100,7 @@ public class Plugin extends Aware_Plugin {
         esmFilter.addAction(ESM.ACTION_AWARE_ESM_DISMISSED);
         esmFilter.addAction(ESM.ACTION_AWARE_ESM_EXPIRED);
         registerReceiver(esmReceiver, esmFilter);
+        sendBroadcast(new Intent(Aware.ACTION_AWARE_REFRESH));
     }
 
     @Override
