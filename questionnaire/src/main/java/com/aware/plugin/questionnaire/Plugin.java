@@ -31,6 +31,8 @@ public class Plugin extends Aware_Plugin {
     public static final String JSON = "json";
     private static SharedPreferences sharedpreferences;
 
+    private final String ESMTAG = "AWARE_ESM_PLUGIN";
+
     public class EsmReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -106,7 +108,7 @@ public class Plugin extends Aware_Plugin {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         String json = Aware.getSetting(getApplicationContext(), Settings.QUESTIONNAIRES_PLUGIN_ESM_QUESTIONNAIRE);
-        String old_json = sharedpreferences.getString(JSON, "");
+        String old_json = sharedpreferences.getString(JSON, ""); // if we have a new JSON to parse
 
         if(json.length()>0 && !json.equals(old_json)){
             jsonParser(json);
@@ -117,7 +119,7 @@ public class Plugin extends Aware_Plugin {
 
     @Override
     public void onDestroy() {
-        Log.d("asd", "onDestroy");
+        Log.d(ESMTAG, "onDestroy");
         super.onDestroy();
 
         JSONArray arr = null;
